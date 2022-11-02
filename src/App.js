@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
+import { array1Data, array2Data } from './dummydata';
 import Tile from './Tile';
 
 function turnFileIntiArray(text) {
@@ -24,8 +25,8 @@ function turnFileIntiArray(text) {
 }
 
 function App({ mediaType = 'video' }) {
-  const [arrayOfLines1, setArrayOfLines1] = useState([]);
-  const [arrayOfLines2, setArrayOfLines2] = useState([]);
+  const [arrayOfLines1, setArrayOfLines1] = useState(array1Data);
+  const [arrayOfLines2, setArrayOfLines2] = useState(array2Data);
 
   const handleFileChange = (eve) => {
     let file = eve.target.files[0];
@@ -39,6 +40,7 @@ function App({ mediaType = 'video' }) {
       eve.target.id === 'textFile1'
         ? setArrayOfLines1(turnFileIntiArray(textInsideFile))
         : setArrayOfLines2(turnFileIntiArray(textInsideFile));
+      console.log(arrayOfLines1, arrayOfLines2);
     };
     reader.readAsText(file);
   };
