@@ -52,12 +52,27 @@ function App({ mediaType = 'video' }) {
       </MobileScreenContent>
       <Container>
         <VideoContainer>
+          <input type='file' id='mediaFile' accept='video/*, audio/*' hidden />
           <video
             style={{ display: `${mediaType === 'video' ? 'block' : 'none'}` }}
             controls
           >
             <source src='assets/video.mp4' id='video_here' />
           </video>
+          <StyledButton
+            htmlFor='mediaFile'
+            style={{
+              display: `${
+                !(mediaType === 'video')
+                  ? !(mediaType === 'audio')
+                    ? 'block'
+                    : 'none'
+                  : 'none'
+              }`,
+            }}
+          >
+            Add Media
+          </StyledButton>
         </VideoContainer>
         <TextWrapper>
           <input
